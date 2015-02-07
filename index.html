@@ -63,20 +63,89 @@
 		</div>
 		<script type="text/javascript">
 			var ctx = document.getElementById('myCanvas').getContext('2d');
-			  for (var i = 1; i < 7; i++){
+			  //for (var i = 1; i < 7; i++){
 				ctx.lineWidth = 1;
 				ctx.beginPath();
-				ctx.moveTo(1+i*200,0);
-				ctx.lineTo(1+i*200,780);
+				ctx.moveTo(200,0);
+				ctx.lineTo(200,468);
 				ctx.strokeStyle = '#ff0000';
 				ctx.stroke();
-			  }
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(400,0);
+				ctx.lineTo(400,468);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(600,0);
+				ctx.lineTo(600,624);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(800,0);
+				ctx.lineTo(800,624);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(1000,0);
+				ctx.lineTo(1000,780);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(1200,0);
+				ctx.lineTo(1200,780);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+			 // }
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('1E', 150, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('1W', 350, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('2N', 550, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('2S', 750, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('3E', 950, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('3W', 1150, 100);
+
+
 			ctx.lineWidth = 1;
 			ctx.beginPath();
 			ctx.moveTo(198,350);
 			ctx.lineTo(204,350);
 			ctx.strokeStyle = '#ff0000';
 			ctx.stroke();
+
+
 		
 		</script>
 

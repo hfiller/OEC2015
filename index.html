@@ -171,7 +171,7 @@
 		var trainsArray = [];
 		var lanes =[];
 		var laneLength = [];
-
+		var persistentTrainsArray = [];
 		function addTrains(train){
 			console.log(train);
 			//count to 5, every 5th time, redraw
@@ -180,6 +180,7 @@
 				counter =0;
 			}
 			trainsArray.push(train);
+			persistentTrainsArray[train.Train] = train;
 		}
 		function trainDraw(train){
 			ctx.lineWidth = 1;

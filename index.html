@@ -18,9 +18,14 @@
 
 					<div class = "row">
 						<div class="btn-group col-md-6">
-							<div class="input-group input-group-md">
-							  <input type="text" class="form-control" placeholder="Train to slow/stop" aria-describedby="sizing-addon1" id = "trayn">
-							</div>
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id= "traindd">
+								Train <span class="caret"></span><br>
+							</button>
+							<ul class="dropdown-menu" role="menu" id = "trainlist">
+								<li><a href="#">Train 1</a></li>
+								<li><a href="#">Train 2</a></li>
+								<li><a href="#">Train 3</a></li>
+							 </ul>
 						</div>
 						<div class= "col-md-3">
 							<button type="button" class="btn btn-default" id="slow">Slow</button>
@@ -47,9 +52,6 @@
 					<div>
 						<button type="button" class="btn btn-default" id = "zoomout" onclick="canvas.style.zoom='100%'">ZOOM OUT</button>
 					</div><br>
-					<div id="traininfo">
-						
-					</div>
 
 				</div>
 
@@ -62,10 +64,13 @@
 		</div>
 		<script type="text/javascript">
 		var ctx = document.getElementById('myCanvas').getContext('2d');
-			
+		var scaleFactor = 1;
+		var translateX = 0;
+		var translateY = 0;
 		function draw(){
 			var width = screen.width*8/10;
 			var height = screen.height;
+
 
 			lanes['1E'] = width*1/8;
 			lanes['1W'] = width*2/8;
@@ -84,6 +89,9 @@
 
 			document.getElementById('myCanvas').width = width;
 			document.getElementById('myCanvas').height = height;
+			ctx.translate((width/2-translateX)*(scaleFactor-1),(height/2-translateY)*(scaleFactor-1));
+			
+			ctx.scale(scaleFactor,scaleFactor);
 			  //for (var i = 1; i < 7; i++){
 			  	ctx.clearRect(0, 0, width, height);
 				ctx.lineWidth = 1;
@@ -164,13 +172,13 @@
 			}
 			
 			trainsArray = [];
+
 		}
 		var counter = 0;
 		var trainsArray = [];
 		var lanes =[];
 		var laneLength = [];
 		function addTrains(train){
-			console.log(train);
 			//count to 5, every 5th time, redraw
 			if(++counter >= 5){ 
 				draw(trainsArray);
@@ -181,12 +189,34 @@
 		function trainDraw(train){
 			ctx.lineWidth = 1;
 			ctx.beginPath();
-			console.log(lanes[train.track] +' ' +train.FrtLoc/laneLength[train.track])
 			ctx.moveTo(lanes[train.track]-10,train.FrtLoc/laneLength[train.track]);
 			ctx.lineTo(lanes[train.track]+10,train.RearLoc/laneLength[train.track]);
 			ctx.strokeStyle = '#ff0000';
 			ctx.stroke();
 		}
+		var event = 'onwheel' in document ? 'wheel' : 'onmousewheel' in document ? 'mousewheel' : 'DOMMouseScroll';
+		window.addEventListener(event, wheelHandle);
+
+		function wheelHandle(event) {
+		    var normalized;
+		    if (event.wheelDelta) {
+		        normalized = (event.wheelDelta % 120 - 0) == -0 ? event.wheelDelta / 120 : event.wheelDelta / 12;
+		    } else {
+		        var rawAmmount = event.deltaY ? event.deltaY : event.detail;
+		        normalized = -(rawAmmount % 3 ? rawAmmount * 10 : rawAmmount / 3);
+		    }
+		    report(normalized,event);
+		}
+		function report(ammout,event) {
+    		console.log('wheel ammout: ' + ammout);
+    		console.log(event.pageX);
+    		console.log(event.pageY);
+    		translateX = event.pageX/2;
+    		translateY = event.pageY/2;
+    		scaleFactor += ammout /100;
+		}
+
+
 		</script>
 
 		<link href="css/main.css"></script>

@@ -55,3 +55,40 @@ function checkCollision(behindTrain, aheadTrain) {
 function frontOfBlock(blockNumber) {
     return 75 * blockNumber;
 }
+
+// Given a train location, returns the front of that block in meters
+function backOfBlock(blockNumber) {
+    return 75 * (blockNumber - 1);
+}
+
+var data = {};
+var currentTime = 0;
+
+function trains(data) {
+  for(track in data){
+    // Track is which track you are on
+    // Need to keep track of 2 train objects at once so we can do collision checking, this variable holds the previous train 
+      var lastTrain;
+        // Trains are organized in ascending order by front location (signal block)
+        for(FrtLoc in data[track]){
+          // Create a train object 
+          var train = {};
+          train.train = data[track][FrtLoc].Train;
+          train.FrtLoc = FrtLoc;
+          train.RearLoc = data[track][FrtLoc].RearLoc;
+          train.track = track;
+          train.speed = data[track][FrtLoc].Speed;
+          train.status = data[track][FrtLoc].Status;
+          delete data[track][FrtLoc];
+
+          console.log(train);
+
+
+          // send the two trains in a function, except for the first train in the array (we need more than one train)
+          if(typeof lastTrain !== 'undefined'){
+            checkCollision(lastTrain, train); 
+          }
+          lastTrain = train;
+        }
+  }
+}

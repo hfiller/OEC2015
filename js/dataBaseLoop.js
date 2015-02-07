@@ -29,12 +29,14 @@ function processFile(e) {
        		if(typeof data[tmp[0]] == 'undefined'){
        			data[tmp[0]] = {};
        		}
-       		data[tmp[0]][tmp[2]] = {};
-       		data[tmp[0]][tmp[2]]['Train'] = tmp[1];
-       		data[tmp[0]][tmp[2]]['RearLoc'] = tmp[3];
-       		data[tmp[0]][tmp[2]]['Track'] = tmp[4];
-       		data[tmp[0]][tmp[2]]['Speed'] = tmp[5];
-       		data[tmp[0]][tmp[2]]['Status'] = tmp[6];
+       		if(typeof data[tmp[0]][tmp[4]] == 'undefined'){
+       			data[tmp[0]][tmp[4]] = [];
+       		}
+       		data[tmp[0]][tmp[4]][tmp[2]] = {};
+       		data[tmp[0]][tmp[4]][tmp[2]]['Train'] = tmp[1];
+       		data[tmp[0]][tmp[4]][tmp[2]]['RearLoc'] = tmp[3];
+       		data[tmp[0]][tmp[4]][tmp[2]]['Speed'] = tmp[5];
+       		data[tmp[0]][tmp[4]][tmp[2]]['Status'] = tmp[6];
        	}
        	console.log('done');
     }
@@ -45,7 +47,6 @@ function processFile(e) {
 
 function dataLoop(){
 	var localData = data[currentTime++];
-	//DO STUFF
-	console.log(localData);
+	trains(localData);
 	delete localData;
 }

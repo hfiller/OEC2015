@@ -38,7 +38,7 @@
 						</div>
 
 						<div class="col-md-4">
-							<button type="button" class="btn btn-default" id = "trainlookup">Submit</button>
+							
 						</div>
 					</div><br>
 					<div>
@@ -179,6 +179,15 @@
 			trainsArray.push(train);
 		}
 		function trainDraw(train){
+			if ($("#trainid").val() == train.Train) {
+				console.log(train);
+				var str = '';
+				str += '<p>' + train.Train + ' <\/p><br>';
+				str += '<p>' + train.Speed + ' <\/p><br>';
+				str += '<p>' + train.track + ' <\/p><br>';
+				str += '<p>' + train.status + ' <\/p><br>';
+				$('#traininfo').html(str);
+			}
 			ctx.lineWidth = 1;
 			ctx.beginPath();
 			console.log(lanes[train.track] +' ' +train.FrtLoc/laneLength[train.track])

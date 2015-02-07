@@ -18,14 +18,9 @@
 
 					<div class = "row">
 						<div class="btn-group col-md-6">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id= "traindd">
-								Train <span class="caret"></span><br>
-							</button>
-							<ul class="dropdown-menu" role="menu" id = "trainlist">
-								<li><a href="#">Train 1</a></li>
-								<li><a href="#">Train 2</a></li>
-								<li><a href="#">Train 3</a></li>
-							 </ul>
+							<div class="input-group input-group-md">
+							  <input type="text" class="form-control" placeholder="Train to slow/stop" aria-describedby="sizing-addon1" id = "trayn">
+							</div>
 						</div>
 						<div class= "col-md-3">
 							<button type="button" class="btn btn-default" id="slow">Slow</button>
@@ -46,12 +41,9 @@
 							
 						</div>
 					</div><br>
-					<div>
-						<button type="button" class="btn btn-default" id = "zoomin" onclick="canvas.style.zoom='300%'">ZOOM</button>
-					</div><br>
-					<div>
-						<button type="button" class="btn btn-default" id = "zoomout" onclick="canvas.style.zoom='100%'">ZOOM OUT</button>
-					</div><br>
+					<div id="traininfo">
+						
+					</div>
 
 				</div>
 
@@ -190,14 +182,15 @@
 			if ($("#trainid").val() == train.Train) {
 				console.log(train);
 				var str = '';
-				str += '<p>' + train.Train + ' <\/p><br>';
-				str += '<p>' + train.Speed + ' <\/p><br>';
-				str += '<p>' + train.track + ' <\/p><br>';
-				str += '<p>' + train.status + ' <\/p><br>';
+				str += '<p>Train: '  + train.Train + ' <\/p><br>';
+				str += '<p>Speed: ' + train.Speed + ' <\/p><br>';
+				str += '<p>track: ' + train.track + ' <\/p><br>';
+				str += '<p>status: ' + train.status + ' <\/p><br>';
 				$('#traininfo').html(str);
 			}
 			ctx.lineWidth = 1;
 			ctx.beginPath();
+			console.log(lanes[train.track] +' ' +train.FrtLoc/laneLength[train.track])
 			ctx.moveTo(lanes[train.track]-10,train.FrtLoc/laneLength[train.track]);
 			ctx.lineTo(lanes[train.track]+10,train.RearLoc/laneLength[train.track]);
 			ctx.strokeStyle = '#ff0000';

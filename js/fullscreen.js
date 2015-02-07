@@ -1,4 +1,5 @@
 function fullscreen() {
+	$('#trainData').click();
   if (container.requestFullscreen) {
     container.requestFullscreen();
   } else if (container.msRequestFullscreen) {

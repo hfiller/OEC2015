@@ -29,8 +29,6 @@ function trains(data) {
     // Track is which track you are on
     // Need to keep track of 2 train objects at once so we can do collision checking, this variable holds the previous train 
       var lastTrain;
-      // If there is only one train on the track, don't check for collisions
-      if(data[track].length != 1){
         // Trains are organized in ascending order by front location (signal block)
         for(FrtLoc in data[track]){
           // Create a train object 
@@ -44,12 +42,13 @@ function trains(data) {
           delete data[track][FrtLoc];
 
           console.log(train);
+
+
           // send the two trains in a function, except for the first train in the array (we need more than one train)
           if(typeof lastTrain !== 'undefined'){
             checkCollision(lastTrain, train); 
           }
           lastTrain = train;
         }
-      }
   }
 }

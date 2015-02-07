@@ -11,6 +11,10 @@ function fullscreen() {
 	}
 	container.removeEventListener('click', fullscreen, false);
 	buttonstuff();
+	$(document).keyup(function(e) {
+
+  		if (e.keyCode == 27) { saveDataEnd()}   // esc
+});
 }
 var container = document.getElementById('container');
 container.addEventListener('click', fullscreen, false);

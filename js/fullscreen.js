@@ -38,7 +38,8 @@ function stopTrain(){
 }
 
 function findTrain(){
-	alert($('#trainid').val());
+	//alert($('#trainid').val());
+
 	// console.log(data[0]);
 	// var trainnames [];
 	// $.each(function (){

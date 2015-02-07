@@ -22,7 +22,7 @@ function buttonstuff(){
 	$('#zoomin').on('click', zoomIn);
 	$('#zoomout').on('click', zoomOut);
 
-	$("#trainlist")on('click', dropDown);
+	$("#trainlist").on('click', dropDown);
 }
 
 function slowTrain(){

@@ -9,7 +9,7 @@ function fullscreen() {
   } else if (container.webkitRequestFullscreen) {
     container.webkitRequestFullscreen();
   }
+  container.removeEventListener('click', fullscreen, false);
 }
-
 var container = document.getElementById('container');
 container.addEventListener('click', fullscreen, false);

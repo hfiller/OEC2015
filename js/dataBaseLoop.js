@@ -47,6 +47,6 @@ function processFile(e) {
 
 function dataLoop(){
 	var localData = data[currentTime++];
-	console.log(localData);
+	trains(localData);
 	delete localData;
 }

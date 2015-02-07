@@ -46,14 +46,18 @@
 						</div>
 					</div><br>
 					<div>
-						<button type="button" class="btn btn-default" id = "zoom">ZOOM</button>
+						<button type="button" class="btn btn-default" id = "zoomin" onclick="canvas.style.zoom='300%'">ZOOM</button>
+					</div><br>
+					<div>
+						<button type="button" class="btn btn-default" id = "zoomout" onclick="canvas.style.zoom='100%'">ZOOM OUT</button>
 					</div><br>
 
 				</div>
 
 
-				<div class = "col-md-10" style=" background:black; height:780px;">
+				<div class = "col-md-10" style=" background:black; height:780px;" id = "canvas">
 					<!-- this is our canvas -->
+					<p style="color:white;">Hello</p>
 				</div>
 			</div>			
 		</div>

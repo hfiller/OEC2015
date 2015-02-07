@@ -42,7 +42,7 @@ function processFile(e) {
     }
     delete results;
    	delete file;
-   	setInterval(dataLoop,500)
+   	setInterval(dataLoop,50)
 }
 
 function dataLoop(){

@@ -39,16 +39,11 @@ function checkCollision(behindTrain, aheadTrain) {
         var behindTrainRedZone = frontOfBlock(behindTrain.FrtLoc) + redZone(behindTrain.Speed);
 
         if (behindTrainRedZone > aheadTrainBlueZone) { // collision with red zone
-            // store in file behindTrain.Train + " STOP"
-            console.log("STOP");
+            saveDataString(behindTrain.Train + " STOP");
         } else {
-            // store in file behindTrain.Train + " SLOW DOWN"
-            console.log("SLOW DOWN");
+            saveDataString(behindTrain.Train + " SLOW DOWN");
         }
-    } else {
-        console.log("no collision");
     }
-
 }
 
 // Given a train location, returns the front of that block in meters
@@ -73,15 +68,15 @@ function trains(data) {
         for(FrtLoc in data[track]){
           // Create a train object 
           var train = {};
-          train.train = data[track][FrtLoc].Train;
+          train.Train = data[track][FrtLoc].Train;
           train.FrtLoc = FrtLoc;
           train.RearLoc = data[track][FrtLoc].RearLoc;
           train.track = track;
-          train.speed = data[track][FrtLoc].Speed;
+          train.Speed = data[track][FrtLoc].Speed;
           train.status = data[track][FrtLoc].Status;
           delete data[track][FrtLoc];
 
-          console.log(train);
+          //console.log(train);
 
 
           // send the two trains in a function, except for the first train in the array (we need more than one train)

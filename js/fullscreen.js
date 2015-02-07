@@ -46,6 +46,7 @@ function zoomOut(){
 }
 
 function dropDown(){
+	//array of dd items
 	var options = [];
 	$('#trainlist li').each(function(){
 		options.push($(this).val());

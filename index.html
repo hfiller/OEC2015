@@ -7,7 +7,54 @@
 
 	</head>
 	<body>
+		<div class = "container" style="width:100%; margin-top:10px; background:rgb(120,120,120);">
+		<!-- This is the buttons -->
+			<div class = "row" >
+				<div class="col-md-2" style= "">
+					<div> <h1><span class="label label-info" id = "time">Time</span></h1></div><br>
 
+					<div class = "row">
+						<div class="btn-group col-md-6">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id= "traindd">
+								Train <span class="caret"></span><br>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Train 1</a></li>
+								<li><a href="#">Train 2</a></li>
+								<li><a href="#">Train 3</a></li>
+							 </ul>
+						</div>
+						<div class= "col-md-3">
+							<button type="button" class="btn btn-default" id="slow">Slow</button>
+						</div>
+						<div class= "col-md-3">
+							<button type="button" class="btn btn-default" id="stop">Stop</button>
+						</div>
+					</div><br>
+
+					<div class= "row">
+						<div class="col-md-8">
+							<div class="input-group input-group-md">
+							  <input type="text" class="form-control" placeholder="Train ID" aria-describedby="sizing-addon1" id = "trainid">
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-default" id = "trainlookup">Submit</button>
+						</div>
+					</div><br>
+					<div>
+						<button type="button" class="btn btn-default" id = "zoom">ZOOM</button>
+					</div><br>
+
+				</div>
+
+
+				<div class = "col-md-10" style=" background:black; height:780px;">
+					<!-- this is our canvas -->
+				</div>
+			</div>			
+		</div>
 
 		<link href="css/main.css"></script>
 		<script src="js/main.js"></script>

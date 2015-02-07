@@ -19,3 +19,7 @@ function redZone(speed) {
         return 2*redZone(speed) - 0.4*speed
     }
  }
+
+
+var data = {};
+var currentTime = 0;

@@ -30,15 +30,28 @@ function buttonstuff(){
 }
 
 function slowTrain(){
-
+	saveDataString($('#trayn').val()+" SLOW DOWN");
 }
 
 function stopTrain(){
-
+	saveDataString($('#trayn').val()+" STOP");
 }
 
 function findTrain(){
-	
+	console.log(data[0]);
+	var trainnames [];
+	$.each(function (){
+		if(!$.inArray(this.train,trainnames)){
+			trainnames.push(this.train);
+		}
+	});
+  for(var i = 0; i = trainnames.length; i++){
+  	if($('#trainid').val() == trainnames[i]){
+  		var str = '';
+  		str += '';
+  		$('#inject').html(str);
+  	}
+  }
 }
 
 function zoomIn(){

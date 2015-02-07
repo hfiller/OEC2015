@@ -57,40 +57,144 @@
 
 
 				<div class = "col-md-10" style=" background:black; height:780px;" id = "canvas">
-					<canvas id="myCanvas" width="1300px" height="780"style="border:1px solid #ffffff;"></canvas>
+					<canvas id="myCanvas" width="80%" height="100%"></canvas>
 					<p style="color:white;">Hello</p>
 				</div>
 			</div>			
 		</div>
 		<script type="text/javascript">
-			var ctx = $("#myCanvas").get(0).getContext("2d");
+		var ctx = document.getElementById('myCanvas').getContext('2d');
+			
+		function draw(){
+			var width = screen.width*8/10;
+			var height = screen.height;
 
-                var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [
-                        {
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            data: [65, 59, 90, 81, 56, 55, 40]
-                        },
-                        {
-                            fillColor: "rgba(151,187,205,0.5)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff",
-                            data: [28, 48, 40, 19, 96, 27, 100]
-                        }
-                    ]
-                }
+			lanes['1E'] = width*1/8;
+			lanes['1W'] = width*2/8;
+			lanes['2N'] = width*3/8;
+			lanes['2S'] = width*4/8;
+			lanes['3E'] = width*5/8;
+			lanes['3W'] = width*6/8;
 
-                var myNewChart = new Chart(ctx).Line(data);
-		
+			laneLength['1E'] = 15;
+			laneLength['1W'] = 15;
+			laneLength['2N'] = 20;
+			laneLength['2S'] = 20;
+			laneLength['3E'] = 25;
+			laneLength['3W'] = 25;
+
+
+			document.getElementById('myCanvas').width = width;
+			document.getElementById('myCanvas').height = height;
+			  //for (var i = 1; i < 7; i++){
+			  	ctx.clearRect(0, 0, width, height);
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(lanes['1E'],0);
+				ctx.lineTo(lanes['1E'],468);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(lanes['1W'],0);
+				ctx.lineTo(lanes['1W'],468);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(lanes['2N'],0);
+				ctx.lineTo(lanes['2N'],624);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(width*4/8,0);
+				ctx.lineTo(width*4/8,624);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(width*5/8,0);
+				ctx.lineTo(width*5/8,780);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(width*6/8,0);
+				ctx.lineTo(width*6/8,780);
+				ctx.strokeStyle = '#ff0000';
+				ctx.stroke();
+			 // }
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('1E', lanes['1E']-50, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('1W', lanes['1W']-50, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('2N', lanes['2N']-50, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('2S', width*4/8-50, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('3E', width*5/8-50, 100);
+
+			ctx.fillStyle = '#f00';
+			ctx.font = 'italic bold 30px sans-serif';
+			ctx.textBaseline = 'bottom';
+			ctx.fillText('3W', width*6/8-50, 100);
+
+			for(train in trainsArray){
+				trainDraw(trainsArray[train]);
+			}
+			
+			trainsArray = [];
+		}
+		var counter = 0;
+		var trainsArray = [];
+		var lanes =[];
+		var laneLength = [];
+
+		function addTrains(train){
+			console.log(train);
+			//count to 5, every 5th time, redraw
+			if(++counter >= 5){ 
+				draw(trainsArray);
+				counter =0;
+			}
+			trainsArray.push(train);
+		}
+		function trainDraw(train){
+			ctx.lineWidth = 1;
+			ctx.beginPath();
+			console.log(lanes[train.track] +' ' +train.FrtLoc/laneLength[train.track])
+			ctx.moveTo(lanes[train.track]-10,train.FrtLoc/laneLength[train.track]);
+			ctx.lineTo(lanes[train.track]+10,train.RearLoc/laneLength[train.track]);
+			ctx.strokeStyle = '#ff0000';
+			ctx.stroke();
+		}
 		</script>
 
 		<link href="css/main.css"></script>
 		<script src="js/dataBaseLoop.js"></script>
+		<script type="js/generateResult.js"></script>
 		<script src="js/fullscreen.js"></script>
 		<script src="js/main.js"></script>
 	</body>
